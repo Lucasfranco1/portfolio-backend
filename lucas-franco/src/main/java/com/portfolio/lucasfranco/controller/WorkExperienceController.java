@@ -38,7 +38,7 @@ public class WorkExperienceController {
 
     @PreAuthorize(ADMIN)
     @PostMapping(CREATE)
-    public ResponseEntity<WorkExperienceEntity> savePerson(@Validated @RequestBody WorkExperienceEntity workExperienceEntity){
+    public ResponseEntity<WorkExperienceEntity> saveExperience(@Validated @RequestBody WorkExperienceEntity workExperienceEntity){
         WorkExperienceEntity work = workExperienceService.saveWorkExperience(workExperienceEntity);
         return new ResponseEntity<>(work, HttpStatus.CREATED);
 
@@ -47,7 +47,7 @@ public class WorkExperienceController {
     @PutMapping(UPDATE)
     public ResponseEntity<WorkExperienceEntity> updateExperience(@PathVariable(ID) String id, @RequestBody WorkExperienceDTO workExperienceDTO){
 
-        WorkExperienceEntity experience = workExperienceService.getOne(id).get();
+        WorkExperienceEntity experience = workExperienceService.getOneWorkExperience(id).get();
 
         experience.setWork(workExperienceDTO.getWork());
         experience.setDescriptionWork(workExperienceDTO.getDescriptionWork());
@@ -60,10 +60,10 @@ public class WorkExperienceController {
     }
 
     @GetMapping(DETAIL_ID)
-    public ResponseEntity<WorkExperienceEntity> getById(@PathVariable(ID) String id){
+    public ResponseEntity<WorkExperienceEntity> getByIdExperience(@PathVariable(ID) String id){
         if(!workExperienceService.existsById(id))
             return new ResponseEntity(new Message(ERROR_BY_ID), HttpStatus.NOT_FOUND);
-        WorkExperienceEntity experience = workExperienceService.getOne(id).get();
+        WorkExperienceEntity experience = workExperienceService.getOneWorkExperience(id).get();
         return new ResponseEntity(experience, HttpStatus.OK);
     }
 

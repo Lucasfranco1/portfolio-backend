@@ -52,7 +52,7 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public Optional<SkillEntity> getOne(String id) {
+    public Optional<SkillEntity> getOneSkill(String id) {
         return skillRepository.findById(id);
     }
 

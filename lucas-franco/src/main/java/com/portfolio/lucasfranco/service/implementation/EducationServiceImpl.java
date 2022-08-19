@@ -55,7 +55,7 @@ public class EducationServiceImpl implements EducationService {
     }
 
     @Override
-    public Optional<EducationEntity> getOne(String id) {
+    public Optional<EducationEntity> getOneEducation(String id) {
         return educationRepository.findById(id);
     }
 

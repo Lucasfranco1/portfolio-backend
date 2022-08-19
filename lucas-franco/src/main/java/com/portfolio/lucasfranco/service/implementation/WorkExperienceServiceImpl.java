@@ -56,21 +56,6 @@ public class WorkExperienceServiceImpl implements WorkExperienceService {
     }
 
     @Override
-    public WorkExperienceEntity updateWork(String id, WorkExperienceDTO workExperienceDTO) {
-        Optional<WorkExperienceEntity> experience = workExperienceRepository.findById(id);
-        if(experience.isPresent()){
-            WorkExperienceEntity experienceEntity = experience.get();
-            PersonEntity personEntity= personService.findPersonById(PERSON_ID);
-            experienceEntity.setPersonEntity(personEntity);
-            System.out.println("Estoy en el método updateWork");
-            return workExperienceRepository.save(experienceEntity);
-        }
-        System.out.println("Holaa");
-            throw new ParamBadRequest("No existe el id solicitado");
-    }
-
-
-    @Override
     public void deleteWorkExperience(String id) {
         workExperienceRepository.deleteById(id);
     }
@@ -86,7 +71,7 @@ public class WorkExperienceServiceImpl implements WorkExperienceService {
     }
 
     @Override
-    public Optional<WorkExperienceEntity> getOne(String id) {
+    public Optional<WorkExperienceEntity> getOneWorkExperience(String id) {
         return workExperienceRepository.findById(id);
     }
 }

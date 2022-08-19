@@ -50,7 +50,7 @@ public class PersonController {
 
     @PreAuthorize(ADMIN)
     @PutMapping(UPDATE)
-    public ResponseEntity<PersonEntity> update(@PathVariable(ID) String id, @RequestBody PersonDTO personDTO){
+    public ResponseEntity<PersonEntity> updatePerson(@PathVariable(ID) String id, @RequestBody PersonDTO personDTO){
 
         PersonEntity person = personService.findPersonById(id);
 
@@ -84,7 +84,7 @@ public class PersonController {
                     new ImageEntity((String) result.get(ORIGINAL_FILENAME),
                             (String) result.get(URL),
                             (String) result.get(PUBLIC_ID));
-            imageService.save(imageEntity);
+            imageService.saveImage(imageEntity);
             person.setImage(imageEntity.getImageUrl());
             personService.savePerson(person);
         }else{
@@ -125,7 +125,7 @@ public class PersonController {
     }
 
     @GetMapping(DETAIL_ID)
-    public ResponseEntity<PersonEntity> getById(@PathVariable(ID) String id){
+    public ResponseEntity<PersonEntity> getByIdPerson(@PathVariable(ID) String id){
         if(!personService.existsById(id))
             return new ResponseEntity(new Message(ERROR_BY_ID), HttpStatus.NOT_FOUND);
         PersonEntity person = personService.findPersonById(id);

@@ -2,6 +2,7 @@ package com.portfolio.lucasfranco.service.implementation;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,16 +12,17 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.portfolio.lucasfranco.util.constants.ConstantsUtil.*;
+
 @Service
 public class CloudinaryService {
     Cloudinary cloudinary;
-
     private Map<String, String> valuesMap= new HashMap<>();
 
     public CloudinaryService() {
-        valuesMap.put("cloud_name", "lucasfranco1");
-        valuesMap.put("api_key", "221248742812656");
-        valuesMap.put("api_secret", "1B7M7bEaAPLo-dVoIxxQ4JlsLn8");
+        valuesMap.put(CLOUD_NAME, NAME_CLOUD);
+        valuesMap.put(API_KEY, KEY_API);
+        valuesMap.put(API_SECRET, SECRET_API);
         cloudinary=new Cloudinary(valuesMap);
     }
 

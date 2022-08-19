@@ -2,11 +2,8 @@ package com.portfolio.lucasfranco.controller;
 
 import com.portfolio.lucasfranco.dto.Message;
 import com.portfolio.lucasfranco.dto.SkillDTO;
-import com.portfolio.lucasfranco.entity.EducationEntity;
-import com.portfolio.lucasfranco.entity.ImageEntity;
 import com.portfolio.lucasfranco.entity.PersonEntity;
 import com.portfolio.lucasfranco.entity.SkillEntity;
-import com.portfolio.lucasfranco.service.ImageService;
 import com.portfolio.lucasfranco.service.PersonService;
 import com.portfolio.lucasfranco.service.SkillService;
 import com.portfolio.lucasfranco.service.implementation.CloudinaryService;
@@ -48,10 +45,10 @@ public class SkillController {
     }
 
     @GetMapping(DETAIL_ID)
-    public ResponseEntity<SkillEntity> getById(@PathVariable(ID) String id){
+    public ResponseEntity<SkillEntity> getByIdSkill(@PathVariable(ID) String id){
         if(!skillService.existsById(id))
             return new ResponseEntity(new Message(ERROR_BY_ID), HttpStatus.NOT_FOUND);
-        SkillEntity skill = skillService.getOne(id).get();
+        SkillEntity skill = skillService.getOneSkill(id).get();
         return new ResponseEntity(skill, HttpStatus.OK);
     }
 

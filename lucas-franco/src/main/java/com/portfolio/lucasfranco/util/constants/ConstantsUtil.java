@@ -2,6 +2,11 @@ package com.portfolio.lucasfranco.util.constants;
 
 public interface ConstantsUtil {
 
+    /*
+        Utilizo constantes para que el codigo quede más prolijo y reutilizar cosas.
+        Lo subo a git para que puedan evaluar, planeo después hacer uso del git ignore.
+     */
+
     // PersonID
     public final static String PERSON_ID = "01813f01-d6e7-4de2-91df-76667db53488";
     //Cross
@@ -24,7 +29,7 @@ public interface ConstantsUtil {
     public final static String DETAIL_ID = "/detail/{id}";
     public final static String DELETE_EDUCATION = "/delete_education/{id}";
     public final static String DELETE = "/delete/{id}";
-
+    public final static String PATH_UPLOAD = "/upload";
 
     public final static String ID = "id";
     public final static String PARAM_FILE = "file";
@@ -54,6 +59,12 @@ public interface ConstantsUtil {
     //ROLES
     public final static String ADMIN = "hasRole('ADMIN')";
 
-
+    //Cloudinary
+    public final static String CLOUD_NAME = "cloud_name";
+    public final static String API_KEY = "api_key";
+    public final static String API_SECRET = "api_secret";
+    public final static String NAME_CLOUD = "lucasfranco1";
+    public final static String KEY_API = "221248742812656";
+    public final static String SECRET_API = "1B7M7bEaAPLo-dVoIxxQ4JlsLn8";
 
 }

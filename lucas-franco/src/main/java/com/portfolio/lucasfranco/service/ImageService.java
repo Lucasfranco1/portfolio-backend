@@ -8,13 +8,13 @@ import java.util.Optional;
 public interface ImageService {
 
 
-    public List<ImageEntity> list();
+    public List<ImageEntity> listImages();
 
-    public void save(ImageEntity imageEntity);
+    public void saveImage(ImageEntity imageEntity);
 
-    public void delete(String id);
+    public void deleteImage(String id);
 
-    public Optional<ImageEntity>getOne(String id);
+    public Optional<ImageEntity> getOneImage(String id);
 
     public boolean exists(String id);
 }

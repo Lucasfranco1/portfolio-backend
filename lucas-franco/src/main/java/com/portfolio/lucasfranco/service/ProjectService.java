@@ -11,20 +11,20 @@ public interface ProjectService {
 
     public List<ProjectEntity> getAllProjects();
 
-    //List projects for personEntity
     public List<ProjectEntity> getAllProjectsPersonEntity(PersonEntity idPerson) throws MyException;
 
-    //save project
+
     public ProjectEntity saveProject(ProjectEntity projectEntity);
 
     public void saveProjectUpdate(ProjectEntity projectEntity);
 
-    //delete project
+
     public void deleteProject(String id);
 
-    //find project
+
     public ProjectEntity findProjectById(String id);
 
     public boolean existsById(String id);
-    public Optional<ProjectEntity> getOne(String id);
+
+    public Optional<ProjectEntity> getOneProject(String id);
 }

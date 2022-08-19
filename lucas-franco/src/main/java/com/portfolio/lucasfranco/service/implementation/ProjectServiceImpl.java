@@ -74,7 +74,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Optional<ProjectEntity> getOne(String id) {
+    public Optional<ProjectEntity> getOneProject(String id) {
         return projectRepository.findById(id);
     }
 }

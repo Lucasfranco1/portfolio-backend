@@ -2,10 +2,8 @@ package com.portfolio.lucasfranco.controller;
 
 import com.portfolio.lucasfranco.dto.Message;
 import com.portfolio.lucasfranco.dto.ProjectDTO;
-import com.portfolio.lucasfranco.entity.ImageEntity;
 import com.portfolio.lucasfranco.entity.PersonEntity;
 import com.portfolio.lucasfranco.entity.ProjectEntity;
-import com.portfolio.lucasfranco.entity.SkillEntity;
 import com.portfolio.lucasfranco.exceptions.MyException;
 import com.portfolio.lucasfranco.service.ImageService;
 import com.portfolio.lucasfranco.service.PersonService;
@@ -52,10 +50,10 @@ public class ProjectController {
     }
 
     @GetMapping(DETAIL_ID)
-    public ResponseEntity<ProjectEntity> getById(@PathVariable(ID) String id){
+    public ResponseEntity<ProjectEntity> getByIdProject(@PathVariable(ID) String id){
         if(!projectService.existsById(id))
             return new ResponseEntity(new Message(ERROR_BY_ID), HttpStatus.NOT_FOUND);
-        ProjectEntity project = projectService.getOne(id).get();
+        ProjectEntity project = projectService.getOneProject(id).get();
         return new ResponseEntity(project, HttpStatus.OK);
     }
 

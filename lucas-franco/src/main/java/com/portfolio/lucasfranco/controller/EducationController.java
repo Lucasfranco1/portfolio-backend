@@ -46,7 +46,7 @@ public class EducationController {
     @PutMapping(UPDATE)
     public ResponseEntity<EducationEntity> updateEducation(@PathVariable(ID) String id, @RequestBody EducationDTO educationDTO){
 
-        EducationEntity education = educationService.getOne(id).get();
+        EducationEntity education = educationService.getOneEducation(id).get();
 
         education.setEducation(educationDTO.getEducation());
         education.setDescriptionEducation(educationDTO.getDescriptionEducation());
@@ -60,10 +60,10 @@ public class EducationController {
     }
 
     @GetMapping(DETAIL_ID)
-    public ResponseEntity<EducationEntity> getById(@PathVariable(ID) String id){
+    public ResponseEntity<EducationEntity> getByIdEducation(@PathVariable(ID) String id){
         if(!educationService.existsById(id))
             return new ResponseEntity(new Message(ERROR_BY_ID), HttpStatus.NOT_FOUND);
-        EducationEntity education = educationService.getOne(id).get();
+        EducationEntity education = educationService.getOneEducation(id).get();
         return new ResponseEntity(education, HttpStatus.OK);
     }
 

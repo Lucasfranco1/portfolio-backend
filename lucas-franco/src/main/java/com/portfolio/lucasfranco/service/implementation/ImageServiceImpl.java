@@ -15,17 +15,17 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
-    public List<ImageEntity> list(){
+    public List<ImageEntity> listImages(){
         return imageRepository.findByOrderById();
     }
-    public void save(ImageEntity imageEntity){
+    public void saveImage(ImageEntity imageEntity){
         imageRepository.save(imageEntity);
     }
-    public void delete(String id){
+    public void deleteImage(String id){
         imageRepository.deleteById(id);
     }
 
-    public Optional<ImageEntity> getOne(String id){
+    public Optional<ImageEntity> getOneImage(String id){
         return  imageRepository.findById(id);
     }
 

@@ -23,11 +23,16 @@ import static com.portfolio.lucasfranco.util.constants.ConstantsUtil.*;
 
 
 @RestController
-@RequestMapping("/upload")
+@RequestMapping(PATH_UPLOAD)
 @CrossOrigin(origins = CROSS_ORIGIN)
 public class UploadFileController {
 
-
+    /*
+    Cloudinary es un servicio donde se pueden subir imágenes de tal manera que sólo usemos las url
+    para almacenar en la base de datos, esto lo vi como opción para no tener que guardar los archivos estáticos
+    en la base de datos, ya que se requiere transformarlas por medio de blood o base64 y aumenta considerablemente
+    el tamaño de los archivos.
+     */
     @Autowired
     private CloudinaryService cloudinaryService;
 
@@ -39,14 +44,13 @@ public class UploadFileController {
 
     @Autowired
     private SkillService skillService;
-
     @Autowired
     private ProjectService projectService;
 
 
     @GetMapping(PATH_LIST)
     public ResponseEntity<List<ImageEntity>>listImage(){
-        List<ImageEntity> entities= imageService.list();
+        List<ImageEntity> entities= imageService.listImages();
         return new ResponseEntity(entities, HttpStatus.OK);
     }
 
@@ -61,7 +65,7 @@ public class UploadFileController {
                 new ImageEntity((String)result.get(ORIGINAL_FILENAME),
                         (String)result.get(URL),
                         (String)result.get(PUBLIC_ID));
-        imageService.save(imageEntity);
+        imageService.saveImage(imageEntity);
         return new ResponseEntity(new MessageCloudinary(IMAGE_UPLOAD), HttpStatus.OK);
     }
     @PostMapping(PATH_FILE_PROJECT)
@@ -76,7 +80,7 @@ public class UploadFileController {
                 new ImageEntity((String)result.get(ORIGINAL_FILENAME),
                         (String)result.get(URL),
                         (String)result.get(PUBLIC_ID));
-        imageService.save(imageEntity);
+        imageService.saveImage(imageEntity);
         ProjectEntity projectEntity= projectService.findProjectById(id);
         projectEntity.setImageProject(imageEntity.getImageUrl());
         projectService.saveProject(projectEntity);
@@ -89,12 +93,12 @@ public class UploadFileController {
             return new ResponseEntity(new MessageCloudinary(ERROR_IMAGE), HttpStatus.BAD_REQUEST);
         }
         Map result= cloudinaryService.upload(newMultipartFile);
-        ImageEntity imageEntity= imageService.getOne(id).get();
+        ImageEntity imageEntity= imageService.getOneImage(id).get();
 
         imageEntity.setName((String) result.get(ORIGINAL_FILENAME));
         imageEntity.setImageUrl((String) result.get(URL));
         imageEntity.setImageId((String) result.get(PUBLIC_ID));
-        imageService.save(imageEntity);
+        imageService.saveImage(imageEntity);
         return new ResponseEntity(new MessageCloudinary(IMAGE_UPLOAD), HttpStatus.OK);
     }
 
@@ -103,9 +107,9 @@ public class UploadFileController {
         if(!imageService.exists(id)){
             return new ResponseEntity(new MessageCloudinary(ERROR_BY_ID), HttpStatus.NOT_FOUND);
         }
-        ImageEntity imageEntity= imageService.getOne(id).get();
+        ImageEntity imageEntity= imageService.getOneImage(id).get();
         Map result= cloudinaryService.delete(imageEntity.getImageId());
-        imageService.delete(id);
+        imageService.deleteImage(id);
         return new ResponseEntity(new MessageCloudinary("Image deleted!"), HttpStatus.OK);
     }
 

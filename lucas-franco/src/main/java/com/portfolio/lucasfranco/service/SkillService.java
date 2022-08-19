@@ -10,15 +10,19 @@ public interface SkillService {
 
     public List<SkillEntity> getAllSkills();
 
-    //List work for personEntity
+    //List skill for personEntity
     public List<SkillEntity> getAllSkillPersonEntity(PersonEntity idPerson);
 
-    //save Work
+
     public SkillEntity saveSkill(SkillEntity skillEntity);
+
     public void saveSkillUpdate(SkillEntity skillEntity);
-    public Optional<SkillEntity> getOne(String id);
+
+    public Optional<SkillEntity> getOneSkill(String id);
+
     public boolean existsById(String id);
     //delete work
+
     public void deleteSkill(String id);
 
     //find work
