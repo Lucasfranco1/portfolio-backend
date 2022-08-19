@@ -5,7 +5,7 @@ public interface ConstantsUtil {
     // PersonID
     public final static String PERSON_ID = "01813f01-d6e7-4de2-91df-76667db53488";
     //Cross
-    public final static String CROSS_ORIGIN = "http://localhost:4200";
+    public final static String CROSS_ORIGIN = "https://portfoliofrontend-dev.web.app";
 
     //PATH
     public final static String PATH_PERSON = "/person";
