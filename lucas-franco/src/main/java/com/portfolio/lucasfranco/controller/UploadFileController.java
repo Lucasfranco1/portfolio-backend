@@ -30,7 +30,7 @@ public class UploadFileController {
     /*
     Cloudinary es un servicio donde se pueden subir imágenes de tal manera que sólo usemos las url
     para almacenar en la base de datos, esto lo vi como opción para no tener que guardar los archivos estáticos
-    en la base de datos, ya que se requiere transformarlas por medio de blood o base64 y aumenta considerablemente
+    en la base de datos, ya que se requiere transformarlas por medio de blod o base64 y aumenta considerablemente
     el tamaño de los archivos.
      */
     @Autowired
